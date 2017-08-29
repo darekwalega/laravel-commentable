@@ -66,4 +66,16 @@ class Comment extends Model
 
     	return $this;
     }
+
+    public function unpublish()
+    {
+        $this->published_at = null;
+
+        $this->save();
+    }
+
+    public function togglePublish()
+    {
+        ($this->isPublished()) ? $this->unpublish() : $this->publish();
+    }
 }
